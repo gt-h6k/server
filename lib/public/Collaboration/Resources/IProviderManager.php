@@ -28,13 +28,13 @@ namespace OCP\Collaboration\Resources;
 interface IProviderManager {
 
 	/**
-	 * @return array list of resource providers
+	 * @return IProvider[] list of resource providers
 	 * @since 18.0.0
 	 */
 	public function getResourceProviders(): array;
 
 	/**
-	 * @param string $provider
+	 * @param string $provider provider's class name
 	 * @since 18.0.0
 	 */
 	public function registerResourceProvider(string $provider): void;

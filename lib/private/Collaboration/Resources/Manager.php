@@ -507,7 +507,7 @@ class Manager implements IManager {
 	 * @param string $provider
 	 */
 	public function registerResourceProvider(string $provider): void {
-		$this->logger->debug('Manager::registerResourceProvider is deprecated');
+		$this->logger->debug('\OC\Collaboration\Resources\Manager::registerResourceProvider is deprecated', ['provider' => $provider]);
 		$this->providerManager->registerResourceProvider($provider);
 	}
 
