@@ -77,12 +77,12 @@ class FileMimeType extends AbstractStringCheck implements IFileCheck {
 	 * 3. Create a folder and rename it, the folder should not be tagged, but it is
 	 *
 	 * @param string $storageId
-	 * @param string $path
+	 * @param string|null $path
 	 * @param string $mimeType
 	 * @return string
 	 */
-	protected function cacheAndReturnMimeType(string $storageId, string $path, string $mimeType): string {
-		if (!$this->storage->file_exists($path)) {
+	protected function cacheAndReturnMimeType(string $storageId, ?string $path, string $mimeType): string {
+		if ($path !== null && !$this->storage->file_exists($path)) {
 			$this->mimeType[$storageId][$path] = $mimeType;
 		}
 
