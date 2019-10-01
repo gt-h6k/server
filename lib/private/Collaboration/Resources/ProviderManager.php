@@ -49,7 +49,7 @@ class ProviderManager implements IProviderManager {
 					$this->providerInstances[] = \OC::$server->query($provider);
 				} catch (QueryException $e) {
 					$this->logger->logException($e, [
-						'message' => 'Error when instantiating resource provider'
+						'message' => "Could not query resource provider $provider: " . $e->getMessage()
 					]);
 				}
 			}
@@ -58,7 +58,7 @@ class ProviderManager implements IProviderManager {
 
 		return $this->providerInstances;
 	}
-	
+
 	public function registerResourceProvider(string $provider): void {
 		$this->providers[] = $provider;
 	}
