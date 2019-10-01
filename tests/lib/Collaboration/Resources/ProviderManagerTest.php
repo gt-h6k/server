@@ -24,12 +24,16 @@ namespace Test\Collaboration\Resources;
 
 use OC\Collaboration\Resources\ProviderManager;
 use OCA\Files\Collaboration\Resources\ResourceProvider;
+use OCP\AppFramework\QueryException;
 use OCP\Collaboration\Resources\IProviderManager;
 use OCP\ILogger;
+use OCP\IServerContainer;
 use Test\TestCase;
 
 class ProviderManagerTest extends TestCase {
 
+	/** @var IServerContainer */
+	protected $serverContainer;
 	/** @var ILogger */
 	protected $logger;
 	/** @var IProviderManager */
@@ -38,8 +42,10 @@ class ProviderManagerTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
 
+		$this->serverContainer = $this->createMock(IServerContainer::class);
 		$this->logger = $this->createMock(ILogger::class);
-		$this->providerManager = new class($this->logger) extends ProviderManager {
+
+		$this->providerManager = new class($this->serverContainer, $this->logger) extends ProviderManager {
 			public function countProviders(): int {
 				return count($this->providers);
 			}
@@ -56,6 +62,11 @@ class ProviderManagerTest extends TestCase {
 	}
 
 	public function testGetResourceProvidersValidProvider(): void {
+		$this->serverContainer->expects($this->once())
+			->method('query')
+			->with($this->equalTo(ResourceProvider::class))
+			->willReturn($this->createMock(ResourceProvider::class));
+
 		$this->providerManager->registerResourceProvider(ResourceProvider::class);
 		$resourceProviders = $this->providerManager->getResourceProviders();
 
@@ -64,6 +75,11 @@ class ProviderManagerTest extends TestCase {
 	}
 
 	public function testGetResourceProvidersInvalidProvider(): void {
+		$this->serverContainer->expects($this->once())
+			->method('query')
+			->with($this->equalTo('InvalidResourceProvider'))
+			->willThrowException(new QueryException('A meaningful error message'));
+
 		$this->logger->expects($this->once())
 			->method('logException');
 
@@ -74,6 +90,15 @@ class ProviderManagerTest extends TestCase {
 	}
 
 	public function testGetResourceProvidersValidAndInvalidProvider(): void {
+		$this->serverContainer->expects($this->at(0))
+			->method('query')
+			->with($this->equalTo('InvalidResourceProvider'))
+			->willThrowException(new QueryException('A meaningful error message'));
+		$this->serverContainer->expects($this->at(1))
+			->method('query')
+			->with($this->equalTo(ResourceProvider::class))
+			->willReturn($this->createMock(ResourceProvider::class));
+
 		$this->logger->expects($this->once())
 			->method('logException');
 
