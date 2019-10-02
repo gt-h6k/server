@@ -48,10 +48,7 @@ class ManagerTest extends TestCase {
 		$connection = $this->createMock(IDBConnection::class);
 		$this->manager = new Manager($connection, $this->providerManager, $this->logger);
 	}
-
-	/**
-	 * @deprecated 18.0.0
-	 */
+	
 	public function testRegisterResourceProvider(): void {
 		$this->logger->expects($this->once())
 			->method('debug')
