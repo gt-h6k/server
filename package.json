@@ -25,6 +25,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@chenfengyuan/vue-qrcode": "^1.0.1",
+    "@nextcloud/initial-state": "^0.2.0",
     "autosize": "^4.0.2",
     "backbone": "^1.4.0",
     "blueimp-md5": "^2.12.0",
@@ -44,7 +45,6 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
     "nextcloud-axios": "^0.2.1",
-    "nextcloud-initial-state": "0.0.3",
     "nextcloud-password-confirmation": "^0.4.2",
     "nextcloud-router": "0.0.9",
     "nextcloud-vue": "^0.12.3",
