@@ -105,10 +105,10 @@ const setDeprecatedProp = (global, cb, msg) => {
 
 window['_'] = _
 window['$'] = $
-window['autosize'] = autosize
-window['Backbone'] = Backbone
-window['Clipboard'] = ClipboardJS
-window['ClipboardJS'] = ClipboardJS
+window['autosize'] = deprecate(autosize, 'autosize', 20)
+window['Backbone'] = deprecate(Backbone, 'backbone', 20)
+window['Clipboard'] = deprecate(ClipboardJS, 'ClipboardJS', 20)
+window['ClipboardJS'] = deprecate(ClipboardJS, 'ClipboardJS', 20)
 window['dav'] = dav
 setDeprecatedProp('DOMPurify', () => DOMPurify, 'The global DOMPurify is deprecated, ship your own')
 window['Handlebars'] = Handlebars
@@ -116,8 +116,8 @@ window['jstimezonedetect'] = deprecate(jstimezonedetect, 'jstimezonedetect', 20)
 window['jstz'] = deprecate(jstimezonedetect, 'jstimezonedetect', 20)
 window['jQuery'] = $
 window['marked'] = deprecate(marked, 'marked', 19)
-window['md5'] = md5
-window['moment'] = moment
+window['md5'] = deprecate(md5, 'md5', 20)
+window['moment'] = deprecate(moment, 'moment', 20)
 
 window['OC'] = OC
 setDeprecatedProp('initCore', () => initCore, 'this is an internal function')
