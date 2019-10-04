@@ -18,7 +18,7 @@ export default {
 		/**
 		 * @deprecated 18.0.0 add https://www.npmjs.com/package/@nextcloud/initial-state to your app
 		 */
-		loadState,
+		loadState
 	},
 	Loader,
 	Toast,
