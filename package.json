@@ -61,7 +61,7 @@
     "bootstrap": "^4.6.0",
     "browserslist-useragent-regexp": "^3.0.2",
     "buffer": "^6.0.3",
-    "camelcase": "^6.3.0",
+    "camelcase": "^7.0.1",
     "clipboard": "^2.0.11",
     "colord": "^2.9.3",
     "core-js": "^3.24.0",
