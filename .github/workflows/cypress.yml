@@ -81,7 +81,7 @@ jobs:
 
 
       - name: Run ${{ matrix.containers == 'component' && 'component' || 'E2E' }} cypress tests
-        uses: cypress-io/github-action@db1693016f23ccf9043f4b2428f9b04e5d502a73 # v5.8.1
+        uses: cypress-io/github-action@7215fc1624803790752b15000c55f71354592d84 # v6.4.0
         with:
           record: true
           parallel: true
