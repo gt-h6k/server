@@ -59,7 +59,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Read package.json node and npm engines version
         uses: skjnldsv/read-package-engines-version-actions@06d6baf7d8f41934ab630e97d9e6c0bc9c9ac5e4 # v3
@@ -80,10 +80,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Set up node ${{ needs.versions.outputs.nodeVersion }}
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ needs.versions.outputs.nodeVersion }}
 
@@ -99,7 +99,7 @@ jobs:
         run: npm run test:coverage --if-present
 
       - name: Collect coverage
-        uses: codecov/codecov-action@0565863a31f2c772f9f0395002a31e3f06189574 # v4.3.1
+        uses: codecov/codecov-action@3cb13a12348ef4ffcf9783ac0f74954f92113e33 # v4.3.1
         with:
           files: ./coverage/lcov.info
 
@@ -114,10 +114,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Set up node ${{ needs.versions.outputs.nodeVersion }}
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ needs.versions.outputs.nodeVersion }}
 
@@ -142,10 +142,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Set up node ${{ needs.versions.outputs.nodeVersion }}
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ needs.versions.outputs.nodeVersion }}
 
